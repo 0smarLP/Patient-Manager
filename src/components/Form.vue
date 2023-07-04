@@ -7,21 +7,45 @@ const alert = reactive({
   message: "",
 });
 
-const state = reactive({
-  name: "",
-  email: "",
-  phone: "",
-  date: "",
-  Symptoms: "",
+const emit = defineEmits([
+  "update:name",
+  "update:email",
+  "update:phone",
+  "update:date",
+  "update:symptoms",
+  "save-patient",
+]);
+
+const props = defineProps({
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  phone: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: String,
+    required: true,
+  },
+  symptoms: {
+    type: String,
+    required: true,
+  },
 });
 
 const validate = (e) => {
-  if (Object.values(state).includes("")) {
+  if (Object.values(props).includes("")) {
     alert.message = "Todos los campos son obligatorios";
     alert.type = "error";
     return;
   }
-  console.log("Agregando");
+  emit("save-patient");
 };
 </script>
 
@@ -48,7 +72,8 @@ const validate = (e) => {
           id="name"
           placeholder="Nombre del paciente"
           class="border-2 w-full p-2 m-2 placeholder-gray rounded-md"
-          v-model="state.name"
+          :value="name"
+          @input="$emit('update:name', $event.target.value)"
         />
       </div>
       <div class="mb-5">
@@ -60,7 +85,8 @@ const validate = (e) => {
           id="email"
           placeholder="Correo electrónico"
           class="border-2 w-full p-2 m-2 placeholder-gray rounded-md"
-          v-model="state.email"
+          :value="email"
+          @input="$emit('update:email', $event.target.value)"
         />
       </div>
       <div class="mb-5">
@@ -72,7 +98,8 @@ const validate = (e) => {
           id="phone"
           placeholder="Número de teléfono"
           class="border-2 w-full p-2 m-2 placeholder-gray rounded-md"
-          v-model="state.phone"
+          :value="phone"
+          @input="$emit('update:phone', $event.target.value)"
         />
       </div>
       <div class="mb-5">
@@ -83,18 +110,20 @@ const validate = (e) => {
           type="date"
           id="date"
           class="border-2 w-full p-2 m-2 placeholder-gray rounded-md"
-          v-model="state.date"
+          :value="date"
+          @input="$emit('update:date', $event.target.value)"
         />
       </div>
       <div class="mb-5">
-        <label class="block text-gray-700 uppercase font-bold" for="Symptoms">
+        <label class="block text-gray-700 uppercase font-bold" for="symptoms">
           Síntomas
         </label>
         <textarea
-          id="Symptoms"
+          id="symptoms"
           placeholder="Describe los Síntomas del paciente"
           class="border-2 w-full p-2 m-2 placeholder-gray rounded-md h-40"
-          v-model="state.Symptoms"
+          :value="symptoms"
+          @input="$emit('update:symptoms', $event.target.value)"
         />
       </div>
 

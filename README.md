@@ -1,7 +1,5 @@
-# Vue 3 + Vite
+# Vue 3 + Vite + TailwindCSS
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+https://lively-marzipan-4c2d95.netlify.app/
 
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+![image](https://github.com/0smarLP/Patient-Manager/assets/99296482/3d685f87-17fd-4642-816d-e2aa37882143)
